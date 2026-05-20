@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "npm install",
   "outputDirectory": "public",
-  "installCommand": "npm install",
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" }
-  ]
+  "installCommand": "npm install"
 }
