@@ -39,9 +39,7 @@
     .admin-link a { color: #6c757d; text-decoration: none; font-size: 12px; }
     .empty-state { text-align: center; padding: 40px; color: #999; }
     .loading { text-align: center; padding: 20px; color: #666; }
-    .download-btn { margin-top: 15px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
-    .download-btn:hover { background: #218838; }
-    .download-section { margin-top: 20px; text-align: center; }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -115,18 +113,15 @@
             <div><span class="value" id="utilization">0</span> <span class="unit">%</span></div>
           </div>
         </div>
-        <div class="download-section" id="downloadSection" style="display: none;">
-          <button class="download-btn" onclick="alert('Excel download temporarily disabled')">Download Excel</button>
-        </div>
       </div>
-  </div>
+    </div>
 
-  <script>
+    <div class="admin-link">
       <a href="/admin.html">Admin Panel</a>
     </div>
   </div>
 
-    <script>
+  <script>
     const CONTAINER_MAX = 67.7;
     let products = [];
     let allProducts = [];
@@ -270,52 +265,6 @@
       document.getElementById('containerCount').textContent = containersNeeded;
       document.getElementById('remainingSpace').textContent = remainingSpace.toFixed(4);
       document.getElementById('utilization').textContent = utilization;
-      document.getElementById('downloadSection').style.display = 'block';
-    }
-
-    function downloadExcel() {
-      const today = new Date().toISOString().split('T')[0];
-
-      let totalVol = 0;
-      const detailData = selectedProducts.map(sp => {
-        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
-        const totalProductVol = ctnsNeeded * sp.volume_per_ctn;
-        totalVol += totalProductVol;
-        return {
-          'Brand': sp.brand || '',
-          'SKU': sp.sku,
-          'Model': sp.model || '',
-          'Colour': sp.colour || '',
-          'Qty': sp.qty,
-          'SETS/CTN': sp.set_per_ctn,
-          'CTNs Needed': ctnsNeeded,
-          'Vol/CTN': sp.volume_per_ctn.toFixed(6),
-          'Total Vol': totalProductVol.toFixed(6)
-        };
-      });
-
-      const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
-      const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
-      const utilization = containersNeeded > 0 ? ((totalVol / (containersNeeded * CONTAINER_MAX)) * 100).toFixed(1) : 0;
-
-      const summaryData = [
-        { 'Field': 'Date', 'Value': today },
-        { 'Field': 'Container Type', 'Value': '40ft HQ' },
-        { 'Field': 'Total Volume', 'Value': totalVol.toFixed(4) + ' CBM' },
-        { 'Field': 'Containers Needed', 'Value': containersNeeded },
-        { 'Field': 'Remaining Space', 'Value': remainingSpace.toFixed(4) + ' CBM' },
-        { 'Field': 'Space Utilization', 'Value': utilization + '%' }
-      ];
-
-      const wb = XLSX.utils.book_new();
-
-      const summarySheet = XLSX.utils.json_to_sheet(summaryData);
-      const detailSheet = XLSX.utils.json_to_sheet(detailData);
-
-      XLSX.utils.book_append_sheet(wb, summarySheet, 'Summary');
-      XLSX.utils.book_append_sheet(wb, detailSheet, 'Detail');
-
-      XLSX.writeFile(wb, `Product-Volume-Summary-${today}.xlsx`);
     }
 
     loadProducts();
