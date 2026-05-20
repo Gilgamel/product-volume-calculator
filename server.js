@@ -1,51 +1,74 @@
 const express = require('express');
 const path = require('path');
 const XLSX = require('xlsx');
-const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// Debug middleware
+app.use((req, res, next) => {
+  console.log('Content-Type:', req.get('Content-Type'));
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Download Excel API
 app.post('/api/download', (req, res) => {
-  try {
-    const { summary, details } = req.body || {};
-    const today = new Date().toISOString().split('T')[0];
+  console.log('Body keys:', Object.keys(req.body));
+  console.log('Body:', JSON.stringify(req.body));
 
-    const wb = XLSX.utils.book_new();
-
-    // Summary sheet
-    const summaryData = [
-      { Field: 'Date', Value: today },
-      { Field: 'Container Type', Value: '40ft HQ' },
-      { Field: 'Total Volume', Value: summary?.totalVolume || '0 CBM' },
-      { Field: 'Containers Needed', Value: summary?.containersNeeded || 0 },
-      { Field: 'Remaining Space', Value: summary?.remainingSpace || '0 CBM' },
-      { Field: 'Space Utilization', Value: summary?.utilization || '0%' }
-    ];
-    const summarySheet = XLSX.utils.json_to_sheet(summaryData);
-    XLSX.utils.book_append_sheet(wb, summarySheet, 'Summary');
-
-    // Detail sheet
-    if (details && details.length > 0) {
-      const detailSheet = XLSX.utils.json_to_sheet(details);
-      XLSX.utils.book_append_sheet(wb, detailSheet, 'Detail');
-    }
-
-    const excelBuffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
-
-    res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.setHeader('Content-Disposition', `attachment; filename=Product-Volume-Summary-${today}.xlsx`);
-    res.status(200).send(excelBuffer);
-  } catch (err) {
-    console.error('Excel generation error:', err);
-    res.status(500).json({ error: 'Failed to generate Excel' });
+  let containers;
+  if (req.body && req.body.containers) {
+    containers = req.body.containers;
+  } else {
+    console.log('No containers in body!');
+    return res.status(400).json({ error: 'No containers in request', body: JSON.stringify(req.body) });
   }
+
+  if (!containers || containers.length === 0) {
+    return res.status(400).json({ error: 'Empty containers array' });
+  }
+
+  console.log('Creating workbook with', containers.length, 'containers');
+
+  const wb = XLSX.utils.book_new();
+
+  containers.forEach((container, index) => {
+    const sheetName = 'Container-' + (index + 1);
+    console.log('Adding sheet:', sheetName, 'products:', container.products?.length);
+
+    const detailData = container.products.map(sp => {
+      const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+      const totalProductVol = ctnsNeeded * sp.volume_per_ctn;
+      return {
+        'Container': index + 1,
+        'Brand': sp.brand || '',
+        'SKU': sp.sku,
+        'Model': sp.model || '',
+        'Colour': sp.colour || '',
+        'Qty': sp.qty,
+        'SETS/CTN': sp.set_per_ctn,
+        'CTNs Needed': ctnsNeeded,
+        'Vol/CTN': sp.volume_per_ctn.toFixed(6),
+        'Total Vol': totalProductVol.toFixed(6)
+      };
+    });
+
+    const sheet = XLSX.utils.json_to_sheet(detailData);
+    XLSX.utils.book_append_sheet(wb, sheet, sheetName);
+  });
+
+  console.log('Final sheets:', wb.SheetNames);
+
+  const buffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader('Content-Disposition', `attachment; filename=Product-Volume-Summary-${new Date().toISOString().split('T')[0]}.xlsx`);
+  res.status(200).send(buffer);
 });
 
 app.listen(PORT, () => {
-  console.log(`Volume Calculator running on http://localhost:${PORT}`);
+  console.log('Server running on http://localhost:' + PORT);
 });

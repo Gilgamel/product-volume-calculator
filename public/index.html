@@ -39,8 +39,16 @@
     .admin-link a { color: #6c757d; text-decoration: none; font-size: 12px; }
     .empty-state { text-align: center; padding: 40px; color: #999; }
     .loading { text-align: center; padding: 20px; color: #666; }
+    .save-section { margin-top: 20px; text-align: center; }
+    .save-btn { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
     .download-section { margin-top: 20px; text-align: center; }
-    .download-btn { margin-top: 15px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .download-section button { margin: 10px 5px; }
+    .download-btn { padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .container-card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .container-card h3 { color: #444; margin-bottom: 15px; font-size: 1.1rem; }
+    .container-card table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .container-card th, .container-card td { padding: 8px; text-align: left; border-bottom: 1px solid #eee; font-size: 13px; }
+    .saved-containers-list { margin-bottom: 20px; }
   </style>
 </head>
 <body>
@@ -115,6 +123,11 @@
             <div><span class="value" id="utilization">0</span> <span class="unit">%</span></div>
           </div>
         </div>
+        </div>
+        <div id="savedContainers" class="saved-containers-list"></div>
+        <div class="save-section" id="saveSection" style="display: none;">
+          <button class="save-btn" onclick="saveContainer()">Save Container</button>
+        </div>
         <div class="download-section" id="downloadSection" style="display: none;">
           <button class="download-btn" onclick="downloadExcel()">Download Excel</button>
         </div>
@@ -131,6 +144,7 @@
     let products = [];
     let allProducts = [];
     let selectedProducts = [];
+    let savedContainers = [];
 
     async function loadProducts() {
       try {
@@ -264,56 +278,114 @@
 
       const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
       const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
-      const utilization = containersNeeded === 1
-        ? ((totalVol / CONTAINER_MAX) * 100).toFixed(1)
-        : (((totalVol - CONTAINER_MAX * (containersNeeded - 1)) / CONTAINER_MAX) * 100).toFixed(1);
+      const utilization = containersNeeded > 0 ? ((totalVol / (containersNeeded * CONTAINER_MAX)) * 100).toFixed(1) : 0;
 
       document.getElementById('totalVolume').textContent = totalVol.toFixed(4);
       document.getElementById('containerCount').textContent = containersNeeded;
       document.getElementById('remainingSpace').textContent = remainingSpace.toFixed(4);
       document.getElementById('utilization').textContent = utilization;
-      document.getElementById('downloadSection').style.display = 'block';
+      document.getElementById('saveSection').style.display = 'block';
+    }
+
+    function saveContainer() {
+      if (selectedProducts.length === 0) {
+        alert('No products to save');
+        return;
+      }
+
+      let totalVol = 0;
+      selectedProducts.forEach(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        totalVol += ctnsNeeded * sp.volume_per_ctn;
+      });
+
+      savedContainers.push({
+        products: JSON.parse(JSON.stringify(selectedProducts)),
+        totalVol: totalVol
+      });
+
+      selectedProducts = [];
+      renderProducts();
+      renderSavedContainers();
+      updateDownloadButton();
+    }
+
+    function renderSavedContainers() {
+      const containerDiv = document.getElementById('savedContainers');
+
+      if (savedContainers.length === 0) {
+        containerDiv.innerHTML = '';
+        return;
+      }
+
+      let html = '';
+      savedContainers.forEach((container, index) => {
+        const containerNum = index + 1;
+        html += `
+          <div class="container-card">
+            <h3>Container ${containerNum} (${container.totalVol.toFixed(4)} CBM)</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Model</th>
+                  <th>Colour</th>
+                  <th>Qty</th>
+                  <th>Vol/CTN</th>
+                  <th>Total Vol</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${container.products.map(sp => {
+                  const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+                  const totalVol = ctnsNeeded * sp.volume_per_ctn;
+                  return `
+                    <tr>
+                      <td>${sp.sku}</td>
+                      <td>${sp.model || ''}</td>
+                      <td>${sp.colour || ''}</td>
+                      <td>${sp.qty}</td>
+                      <td>${sp.volume_per_ctn.toFixed(6)}</td>
+                      <td>${totalVol.toFixed(6)}</td>
+                    </tr>
+                  `;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        `;
+      });
+
+      containerDiv.innerHTML = html;
+    }
+
+    function updateDownloadButton() {
+      const downloadSection = document.getElementById('downloadSection');
+      downloadSection.style.display = savedContainers.length > 0 ? 'block' : 'none';
     }
 
     function downloadExcel() {
-      let totalVol = 0;
-      const details = selectedProducts.map(sp => {
-        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
-        const totalProductVol = ctnsNeeded * sp.volume_per_ctn;
-        totalVol += totalProductVol;
-        return {
-          'Brand': sp.brand || '',
-          'SKU': sp.sku,
-          'Model': sp.model || '',
-          'Colour': sp.colour || '',
-          'Qty': sp.qty,
-          'SETS/CTN': sp.set_per_ctn,
-          'CTNs Needed': ctnsNeeded,
-          'Vol/CTN': sp.volume_per_ctn.toFixed(6),
-          'Total Vol': totalProductVol.toFixed(6)
-        };
-      });
+      let allContainers = [...savedContainers];
 
-      const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
-      const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
-      const utilization = containersNeeded === 1
-        ? ((totalVol / CONTAINER_MAX) * 100).toFixed(1)
-        : (((totalVol - CONTAINER_MAX * (containersNeeded - 1)) / CONTAINER_MAX) * 100).toFixed(1);
+      console.log('savedContainers:', JSON.stringify(allContainers));
+      console.log('allContainers length:', allContainers.length);
 
-      const summary = {
-        totalVolume: totalVol.toFixed(4) + ' CBM',
-        containersNeeded: containersNeeded,
-        remainingSpace: remainingSpace.toFixed(4) + ' CBM',
-        utilization: utilization + '%'
-      };
+      if (allContainers.length === 0) {
+        alert('No containers to download');
+        return;
+      }
 
       fetch('/api/download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ summary, details })
+        body: JSON.stringify({ containers: allContainers })
       })
-      .then(r => r.blob())
+      .then(r => {
+        console.log('Response status:', r.status);
+        return r.blob();
+      })
       .then(blob => {
+        console.log('Blob size:', blob.size);
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
