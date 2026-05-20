@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Volume Calculator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { color: #333; margin-bottom: 5px; }
+    .subtitle { color: #666; margin-bottom: 20px; }
+    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom: 15px; }
+    .form-group label { display: block; margin-bottom: 5px; color: #555; font-weight: 500; }
+    .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    .btn { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .btn-primary { background: #007bff; color: white; }
+    .btn-primary:hover { background: #0056b3; }
+    .btn-secondary { background: #6c757d; color: white; }
+    .btn-secondary:hover { background: #545b62; }
+    .btn-group { display: flex; gap: 10px; }
+    .message { padding: 10px 15px; border-radius: 4px; margin-bottom: 15px; }
+    .message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .message.info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 13px; }
+    th { background: #f8f9fa; font-weight: 600; color: #555; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+    .stat { background: #e9ecef; padding: 15px; border-radius: 6px; text-align: center; }
+    .stat .value { font-size: 28px; font-weight: 600; color: #333; }
+    .stat .label { font-size: 12px; color: #666; margin-top: 5px; }
+    .back-link { margin-bottom: 20px; }
+    .back-link a { color: #007bff; text-decoration: none; }
+    .file-upload { border: 2px dashed #ddd; padding: 20px; text-align: center; border-radius: 6px; }
+    .file-upload:hover { border-color: #007bff; }
+    input[type="file"] { margin-top: 10px; }
+    .login-section, .admin-section { display: none; }
+    .login-section.active, .admin-section.active { display: block; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="back-link"><a href="/index.html">← Back to Calculator</a></div>
+
+    <h1>Admin Panel</h1>
+    <p class="subtitle">Manage product data</p>
+
+    <!-- Login Section -->
+    <div id="loginSection" class="login-section active">
+      <div class="card">
+        <h2 style="margin-bottom: 15px;">Login</h2>
+        <div id="loginMessage"></div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="passwordInput" placeholder="Enter admin password">
+        </div>
+        <button class="btn btn-primary" onclick="login()">Login</button>
+      </div>
+    </div>
+
+    <!-- Admin Section -->
+    <div id="adminSection" class="admin-section">
+      <div class="stats">
+        <div class="stat">
+          <div class="value" id="productCount">0</div>
+          <div class="label">Products</div>
+        </div>
+        <div class="stat">
+          <div class="value" id="lastUpdated">-</div>
+          <div class="label">Last Updated</div>
+        </div>
+        <div class="stat">
+          <div class="value">40ft HQ</div>
+          <div class="label">Container Type</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-bottom: 15px;">Upload Product Data</h2>
+        <div id="uploadMessage"></div>
+
+        <div class="form-group">
+          <label>Download Template</label>
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="downloadTemplate()">Download CSV Template</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Upload CSV File</label>
+          <div class="file-upload">
+            <input type="file" id="csvFile" accept=".csv">
+            <p style="color: #666; font-size: 12px; margin-top: 5px;">Select a CSV file with product data</p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="uploadData()">Upload Data</button>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-bottom: 15px;">Product Preview</h2>
+        <div id="previewTable"></div>
+      </div>
+
+      <button class="btn btn-secondary" onclick="logout()" style="margin-top: 20px;">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    let authToken = localStorage.getItem('adminToken') || '';
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('/data/products.json');
+        if (!res.ok) throw new Error('Failed to load');
+        return await res.json();
+      } catch (err) {
+        console.error('Error loading products:', err);
+        return [];
+      }
+    }
+
+    async function login() {
+      const password = document.getElementById('passwordInput').value;
+      const messageEl = document.getElementById('loginMessage');
+
+      if (!password) {
+        messageEl.innerHTML = '<div class="message error">Please enter a password</div>';
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          authToken = data.token;
+          localStorage.setItem('adminToken', authToken);
+          showAdminSection();
+        } else {
+          messageEl.innerHTML = '<div class="message error">Invalid password</div>';
+        }
+      } catch (err) {
+        messageEl.innerHTML = '<div class="message error">Login failed: ' + err.message + '</div>';
+      }
+    }
+
+    function logout() {
+      authToken = '';
+      localStorage.removeItem('adminToken');
+      document.getElementById('loginSection').classList.add('active');
+      document.getElementById('adminSection').classList.remove('active');
+      document.getElementById('passwordInput').value = '';
+    }
+
+    function showAdminSection() {
+      document.getElementById('loginSection').classList.remove('active');
+      document.getElementById('adminSection').classList.add('active');
+      loadAdminData();
+    }
+
+    async function loadAdminData() {
+      const products = await loadProducts();
+
+      document.getElementById('productCount').textContent = products.length;
+
+      if (products.length > 0) {
+        const latest = products.reduce((a, b) =>
+          new Date(a.updatedAt || 0) > new Date(b.updatedAt || 0) ? a : b
+        );
+        document.getElementById('lastUpdated').textContent = latest.updatedAt
+          ? new Date(latest.updatedAt).toLocaleDateString()
+          : '-';
+      }
+
+      renderPreview(products);
+    }
+
+    function renderPreview(products) {
+      const container = document.getElementById('previewTable');
+      if (products.length === 0) {
+        container.innerHTML = '<p style="color: #999;">No products loaded</p>';
+        return;
+      }
+
+      const preview = products.slice(0, 10);
+      container.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Brand</th>
+              <th>SKU</th>
+              <th>Model</th>
+              <th>Colour</th>
+              <th>Sets/CTN</th>
+              <th>Vol/CTN</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${preview.map(p => `
+              <tr>
+                <td>${p.brand || ''}</td>
+                <td>${p.sku || ''}</td>
+                <td>${p.model || ''}</td>
+                <td>${p.colour || ''}</td>
+                <td>${p.set_per_ctn || 0}</td>
+                <td>${(p.volume_per_ctn || 0).toFixed(6)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+        ${products.length > 10 ? `<p style="color: #666; margin-top: 10px;">...and ${products.length - 10} more products</p>` : ''}
+      `;
+    }
+
+    function downloadTemplate() {
+      window.location.href = '/api/template';
+    }
+
+    async function uploadData() {
+      const fileInput = document.getElementById('csvFile');
+      const messageEl = document.getElementById('uploadMessage');
+
+      if (!fileInput.files || !fileInput.files[0]) {
+        messageEl.innerHTML = '<div class="message error">Please select a CSV file</div>';
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = async (e) => {
+        try {
+          const csvContent = e.target.result;
+
+          const res = await fetch('/api/upload', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-Admin-Key': authToken
+            },
+            body: JSON.stringify({ csv: csvContent })
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            messageEl.innerHTML = `<div class="message success">${data.message}</div>`;
+            fileInput.value = '';
+            loadAdminData();
+          } else {
+            const err = await res.json();
+            messageEl.innerHTML = `<div class="message error">Upload failed: ${err.error}</div>`;
+          }
+        } catch (err) {
+          messageEl.innerHTML = `<div class="message error">Upload failed: ${err.message}</div>`;
+        }
+      };
+
+      reader.readAsText(file);
+    }
+
+    // Check if already logged in
+    if (authToken) {
+      showAdminSection();
+    }
+  </script>
+</body>
+</html>

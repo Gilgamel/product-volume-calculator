@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volume Calculator - 40ft HQ Container</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { color: #333; margin-bottom: 5px; }
+    .subtitle { color: #666; margin-bottom: 20px; }
+    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .card h2 { color: #444; margin-bottom: 15px; font-size: 1.1rem; }
+    .search-box { position: relative; margin-bottom: 15px; }
+    .search-box input { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    .search-box input:focus { outline: none; border-color: #007bff; }
+    .product-select { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+    .product-select select { flex: 1; min-width: 200px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    .product-select input { width: 120px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+    .product-select button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    .product-select button:hover { background: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+    th, td { padding: 12px 8px; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: #f8f9fa; font-weight: 600; color: #555; font-size: 13px; }
+    td { font-size: 14px; }
+    .qty-input { width: 80px; padding: 6px; border: 1px solid #ddd; border-radius: 4px; }
+    .remove-btn { background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    .remove-btn:hover { background: #c82333; }
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+    .summary-item { background: #e9ecef; padding: 15px; border-radius: 6px; }
+    .summary-item label { display: block; color: #666; font-size: 12px; margin-bottom: 5px; }
+    .summary-item .value { font-size: 24px; font-weight: 600; color: #333; }
+    .summary-item .unit { font-size: 14px; color: #888; }
+    .container-info { background: #fff3cd; padding: 15px; border-radius: 6px; margin-bottom: 20px; border-left: 4px solid #ffc107; }
+    .container-info h3 { color: #856404; font-size: 14px; margin-bottom: 10px; }
+    .container-info .specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; font-size: 13px; color: #856404; }
+    .admin-link { text-align: right; margin-top: 20px; }
+    .admin-link a { color: #6c757d; text-decoration: none; font-size: 12px; }
+    .empty-state { text-align: center; padding: 40px; color: #999; }
+    .loading { text-align: center; padding: 20px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Volume Calculator</h1>
+    <p class="subtitle">Calculate container capacity for 40ft HQ</p>
+
+    <div class="container-info">
+      <h3>40ft HQ Container Specifications</h3>
+      <div class="specs">
+        <span>Length: 12.03m</span>
+        <span>Width: 2.352m</span>
+        <span>Height: 2.393m</span>
+        <span>Max Volume: <strong>67.7 CBM</strong></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Add SKU</h2>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by brand or SKU..." oninput="filterProducts()">
+      </div>
+      <div class="product-select">
+        <select id="productSelect">
+          <option value="">Select a product...</option>
+        </select>
+        <input type="number" id="qtyInput" placeholder="Quantity" min="1" value="1">
+        <button onclick="addProduct()">Add</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Selected SKUs</h2>
+      <div id="productList">
+        <div class="empty-state">No products added yet</div>
+      </div>
+
+      <div id="summarySection" style="display: none;">
+        <table>
+          <thead>
+            <tr>
+              <th>Brand</th>
+              <th>SKU</th>
+              <th>Model</th>
+              <th>Colour</th>
+              <th>Qty</th>
+              <th>Sets/CTN</th>
+              <th>CTNs Needed</th>
+              <th>Vol/CTN</th>
+              <th>Total Vol</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="summaryTable"></tbody>
+        </table>
+
+        <div class="summary">
+          <div class="summary-item">
+            <label>Total Volume</label>
+            <div><span class="value" id="totalVolume">0</span> <span class="unit">CBM</span></div>
+          </div>
+          <div class="summary-item">
+            <label>Containers Needed</label>
+            <div><span class="value" id="containerCount">0</span> <span class="unit">× 40ft HQ</span></div>
+          </div>
+          <div class="summary-item">
+            <label>Remaining Space</label>
+            <div><span class="value" id="remainingSpace">0</span> <span class="unit">CBM</span></div>
+          </div>
+          <div class="summary-item">
+            <label>Space Utilization</label>
+            <div><span class="value" id="utilization">0</span> <span class="unit">%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-link">
+      <a href="/admin.html">Admin Panel</a>
+    </div>
+  </div>
+
+  <script>
+    const CONTAINER_MAX = 67.7;
+    let products = [];
+    let allProducts = [];
+    let selectedProducts = [];
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('/data/products.json');
+        if (!res.ok) throw new Error('Failed to load');
+        allProducts = await res.json();
+        products = allProducts;
+        populateSelect();
+      } catch (err) {
+        console.error('Error loading products:', err);
+      }
+    }
+
+    function filterProducts() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      if (!searchTerm) {
+        products = allProducts;
+      } else {
+        products = allProducts.filter(p => {
+          const brandMatch = (p.brand || '').toLowerCase().includes(searchTerm);
+          const skuMatch = (p.sku || '').toLowerCase().includes(searchTerm);
+          const modelMatch = (p.model || '').toLowerCase().includes(searchTerm);
+          const colourMatch = (p.colour || '').toLowerCase().includes(searchTerm);
+          return brandMatch || skuMatch || modelMatch || colourMatch;
+        });
+      }
+
+      populateSelect();
+    }
+
+    function populateSelect() {
+      const select = document.getElementById('productSelect');
+      select.innerHTML = '<option value="">Select a product...</option>';
+
+      const grouped = {};
+      products.forEach(p => {
+        const brand = p.brand || 'Unknown';
+        if (!grouped[brand]) grouped[brand] = [];
+        grouped[brand].push(p);
+      });
+
+      Object.keys(grouped).sort().forEach(brand => {
+        const optgroup = document.createElement('optgroup');
+        optgroup.label = brand;
+        grouped[brand].forEach(p => {
+          const option = document.createElement('option');
+          option.value = p.sku;
+          option.textContent = `${p.sku} - ${p.model || ''} (${p.colour || ''}) - ${p.volume_per_ctn?.toFixed(4) || 0} CBM/CTN`;
+          optgroup.appendChild(option);
+        });
+        select.appendChild(optgroup);
+      });
+    }
+
+    function addProduct() {
+      const select = document.getElementById('productSelect');
+      const qtyInput = document.getElementById('qtyInput');
+      const sku = select.value;
+      const qty = parseInt(qtyInput.value) || 1;
+
+      if (!sku) return alert('Please select a product');
+
+      const product = products.find(p => p.sku === sku);
+      if (!product) return alert('Product not found');
+
+      const existing = selectedProducts.find(sp => sp.sku === sku);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        selectedProducts.push({ ...product, qty });
+      }
+
+      qtyInput.value = '1';
+      renderProducts();
+    }
+
+    function removeProduct(sku) {
+      selectedProducts = selectedProducts.filter(sp => sp.sku !== sku);
+      renderProducts();
+    }
+
+    function updateQty(sku, qty) {
+      const product = selectedProducts.find(sp => sp.sku === sku);
+      if (product) {
+        product.qty = Math.max(1, parseInt(qty) || 1);
+        calculateTotals();
+      }
+    }
+
+    function renderProducts() {
+      const list = document.getElementById('productList');
+      const section = document.getElementById('summarySection');
+
+      if (selectedProducts.length === 0) {
+        list.innerHTML = '<div class="empty-state">No products added yet</div>';
+        section.style.display = 'none';
+        return;
+      }
+
+      const tbody = document.getElementById('summaryTable');
+      tbody.innerHTML = selectedProducts.map(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        const totalVol = ctnsNeeded * sp.volume_per_ctn;
+        return `
+          <tr>
+            <td>${sp.brand || ''}</td>
+            <td>${sp.sku}</td>
+            <td>${sp.model || ''}</td>
+            <td>${sp.colour || ''}</td>
+            <td><input type="number" class="qty-input" value="${sp.qty}" onchange="updateQty('${sp.sku}', this.value)"></td>
+            <td>${sp.set_per_ctn}</td>
+            <td>${ctnsNeeded}</td>
+            <td>${sp.volume_per_ctn.toFixed(6)}</td>
+            <td>${totalVol.toFixed(6)}</td>
+            <td><button class="remove-btn" onclick="removeProduct('${sp.sku}')">Remove</button></td>
+          </tr>
+        `;
+      }).join('');
+
+      section.style.display = 'block';
+      calculateTotals();
+    }
+
+    function calculateTotals() {
+      let totalVol = 0;
+      selectedProducts.forEach(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        totalVol += ctnsNeeded * sp.volume_per_ctn;
+      });
+
+      const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
+      const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
+      const utilization = containersNeeded > 0 ? ((totalVol / (containersNeeded * CONTAINER_MAX)) * 100).toFixed(1) : 0;
+
+      document.getElementById('totalVolume').textContent = totalVol.toFixed(4);
+      document.getElementById('containerCount').textContent = containersNeeded;
+      document.getElementById('remainingSpace').textContent = remainingSpace.toFixed(4);
+      document.getElementById('utilization').textContent = utilization;
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>

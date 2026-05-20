@@ -1,0 +1,7 @@
+node_modules
+server.js
+vercel.json
+*codex version*
+*.xlsx
+*analysis*
+*.txt
