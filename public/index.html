@@ -163,7 +163,7 @@
 
       const grouped = {};
       products.forEach(p => {
-        const brand = p.brand || 'Unknown';
+        const brand = (p.brand || 'Unknown') === 'VTM' ? 'Edifier' : p.brand;
         if (!grouped[brand]) grouped[brand] = [];
         grouped[brand].push(p);
       });
