@@ -174,7 +174,7 @@
         grouped[brand].forEach(p => {
           const option = document.createElement('option');
           option.value = p.sku;
-          option.textContent = `${p.sku} - ${p.volume_per_ctn?.toFixed(4) || 0} CBM/CTN`;
+          option.textContent = `${p.sku} - ${p.volume_per_ctn?.toFixed(4)} CBM/CTN`;
           optgroup.appendChild(option);
         });
         select.appendChild(optgroup);
