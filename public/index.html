@@ -39,6 +39,8 @@
     .admin-link a { color: #6c757d; text-decoration: none; font-size: 12px; }
     .empty-state { text-align: center; padding: 40px; color: #999; }
     .loading { text-align: center; padding: 20px; color: #666; }
+    .download-section { margin-top: 20px; text-align: center; }
+    .download-btn { margin-top: 15px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
   </style>
 </head>
 <body>
@@ -112,6 +114,9 @@
             <label>Space Utilization</label>
             <div><span class="value" id="utilization">0</span> <span class="unit">%</span></div>
           </div>
+        </div>
+        <div class="download-section" id="downloadSection" style="display: none;">
+          <button class="download-btn" onclick="downloadExcel()">Download Excel</button>
         </div>
       </div>
     </div>
@@ -259,12 +264,68 @@
 
       const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
       const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
-      const utilization = containersNeeded > 0 ? ((totalVol / (containersNeeded * CONTAINER_MAX)) * 100).toFixed(1) : 0;
+      const utilization = containersNeeded === 1
+        ? ((totalVol / CONTAINER_MAX) * 100).toFixed(1)
+        : (((totalVol - CONTAINER_MAX * (containersNeeded - 1)) / CONTAINER_MAX) * 100).toFixed(1);
 
       document.getElementById('totalVolume').textContent = totalVol.toFixed(4);
       document.getElementById('containerCount').textContent = containersNeeded;
       document.getElementById('remainingSpace').textContent = remainingSpace.toFixed(4);
       document.getElementById('utilization').textContent = utilization;
+      document.getElementById('downloadSection').style.display = 'block';
+    }
+
+    function downloadExcel() {
+      let totalVol = 0;
+      const details = selectedProducts.map(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        const totalProductVol = ctnsNeeded * sp.volume_per_ctn;
+        totalVol += totalProductVol;
+        return {
+          'Brand': sp.brand || '',
+          'SKU': sp.sku,
+          'Model': sp.model || '',
+          'Colour': sp.colour || '',
+          'Qty': sp.qty,
+          'SETS/CTN': sp.set_per_ctn,
+          'CTNs Needed': ctnsNeeded,
+          'Vol/CTN': sp.volume_per_ctn.toFixed(6),
+          'Total Vol': totalProductVol.toFixed(6)
+        };
+      });
+
+      const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
+      const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
+      const utilization = containersNeeded === 1
+        ? ((totalVol / CONTAINER_MAX) * 100).toFixed(1)
+        : (((totalVol - CONTAINER_MAX * (containersNeeded - 1)) / CONTAINER_MAX) * 100).toFixed(1);
+
+      const summary = {
+        totalVolume: totalVol.toFixed(4) + ' CBM',
+        containersNeeded: containersNeeded,
+        remainingSpace: remainingSpace.toFixed(4) + ' CBM',
+        utilization: utilization + '%'
+      };
+
+      fetch('/api/download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ summary, details })
+      })
+      .then(r => r.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Product-Volume-Summary-${new Date().toISOString().split('T')[0]}.xlsx`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      })
+      .catch(e => {
+        alert('Error: ' + e.message);
+      });
     }
 
     loadProducts();
