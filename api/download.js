@@ -1,6 +1,4 @@
 const XLSX = require('xlsx');
-const fs = require('fs');
-const path = require('path');
 
 module.exports = (req, res) => {
   if (req.method !== 'POST') {
@@ -8,33 +6,42 @@ module.exports = (req, res) => {
   }
 
   try {
-    const { summary, details } = req.body || {};
-    const today = new Date().toISOString().split('T')[0];
+    const { containers } = req.body || {};
+
+    if (!containers || containers.length === 0) {
+      return res.status(400).json({ error: 'Empty containers array' });
+    }
 
     const wb = XLSX.utils.book_new();
 
-    // Summary sheet
-    const summaryData = [
-      { Field: 'Date', Value: today },
-      { Field: 'Container Type', Value: '40ft HQ' },
-      { Field: 'Total Volume', Value: summary?.totalVolume || '0 CBM' },
-      { Field: 'Containers Needed', Value: summary?.containersNeeded || 0 },
-      { Field: 'Remaining Space', Value: summary?.remainingSpace || '0 CBM' },
-      { Field: 'Space Utilization', Value: summary?.utilization || '0%' }
-    ];
-    const summarySheet = XLSX.utils.json_to_sheet(summaryData);
-    XLSX.utils.book_append_sheet(wb, summarySheet, 'Summary');
+    containers.forEach((container, index) => {
+      const sheetName = 'Container-' + (index + 1);
 
-    // Detail sheet
-    if (details && details.length > 0) {
-      const detailSheet = XLSX.utils.json_to_sheet(details);
-      XLSX.utils.book_append_sheet(wb, detailSheet, 'Detail');
-    }
+      const detailData = container.products.map(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        const totalProductVol = ctnsNeeded * sp.volume_per_ctn;
+        return {
+          'Container': index + 1,
+          'Brand': sp.brand || '',
+          'SKU': sp.sku,
+          'Model': sp.model || '',
+          'Colour': sp.colour || '',
+          'Qty': sp.qty,
+          'SETS/CTN': sp.set_per_ctn,
+          'CTNs Needed': ctnsNeeded,
+          'Vol/CTN': sp.volume_per_ctn.toFixed(6),
+          'Total Vol': totalProductVol.toFixed(6)
+        };
+      });
+
+      const sheet = XLSX.utils.json_to_sheet(detailData);
+      XLSX.utils.book_append_sheet(wb, sheet, sheetName);
+    });
 
     const excelBuffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
 
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.setHeader('Content-Disposition', `attachment; filename=Product-Volume-Summary-${today}.xlsx`);
+    res.setHeader('Content-Disposition', `attachment; filename=Product-Volume-Summary-${new Date().toISOString().split('T')[0]}.xlsx`);
     res.status(200).send(excelBuffer);
   } catch (err) {
     console.error('Excel generation error:', err);
