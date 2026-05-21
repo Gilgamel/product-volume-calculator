@@ -11,7 +11,7 @@
     "width_m": 0.344,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.919Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -25,7 +25,7 @@
     "width_m": 0.337,
     "height_m": 0.393,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -39,7 +39,7 @@
     "width_m": 0.345,
     "height_m": 0.388,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -53,7 +53,21 @@
     "width_m": 0.345,
     "height_m": 0.388,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "R1080BT",
+    "model": "R1080BT",
+    "colour": "white",
+    "set_per_ctn": 4,
+    "volume_per_ctn": 0.100526776,
+    "carton_size": "0.431*0.378*0.592M",
+    "length_m": 0.431,
+    "width_m": 0.378,
+    "height_m": 0.592,
+    "moq": 48,
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -67,7 +81,7 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -81,11 +95,11 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
-  {
+    {
     "brand": "Edifier",
-    "sku": "edifier-r1280db-black",
+    "sku": "edifier-r1280db-white",
     "model": "R1280DB",
     "colour": "white silver",
     "set_per_ctn": 2,
@@ -95,7 +109,7 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -109,7 +123,7 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -123,11 +137,11 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-r1700bt-brown",
+    "sku": "edifier-r1700bt",
     "model": "R1700BT",
     "colour": "brown",
     "set_per_ctn": 2,
@@ -137,35 +151,7 @@
     "width_m": 0.352,
     "height_m": 0.412,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
-  },
-  {
-    "brand": "Edifier",
-    "sku": "edifier-r1700bt-black",
-    "model": "R1700BT",
-    "colour": "black",
-    "set_per_ctn": 2,
-    "volume_per_ctn": 0.07035542,
-    "carton_size": "0.462*0.352*0.412M",
-    "length_m": 0.462,
-    "width_m": 0.352,
-    "height_m": 0.412,
-    "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
-  },
-  {
-    "brand": "Edifier",
-    "sku": "edifier-r1700bt-white silver",
-    "model": "R1700BT",
-    "colour": "white silver",
-    "set_per_ctn": 2,
-    "volume_per_ctn": 0.07035542,
-    "carton_size": "0.462*0.352*0.412M",
-    "length_m": 0.462,
-    "width_m": 0.352,
-    "height_m": 0.412,
-    "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -179,7 +165,7 @@
     "width_m": 0.352,
     "height_m": 0.412,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -193,7 +179,7 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -207,7 +193,7 @@
     "width_m": 0.322,
     "height_m": 0.395,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -221,7 +207,7 @@
     "width_m": 0.352,
     "height_m": 0.412,
     "moq": 40,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -235,7 +221,7 @@
     "width_m": 0.322,
     "height_m": 0.393,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -249,11 +235,11 @@
     "width_m": 0.322,
     "height_m": 0.393,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-r2850db-black",
+    "sku": "edifierr2850dbblack",
     "model": "R2850DB",
     "colour": "black",
     "set_per_ctn": 1,
@@ -263,7 +249,7 @@
     "width_m": 0.434,
     "height_m": 0.581,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -277,7 +263,7 @@
     "width_m": 0.425,
     "height_m": 0.375,
     "moq": 48,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
@@ -291,11 +277,11 @@
     "width_m": 0.329,
     "height_m": 0.395,
     "moq": 48,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
-    "sku": "ed-s1000mkii-brown",
+    "sku": "edifiers1000mkiibrown",
     "model": "S1000MKII",
     "colour": "brown",
     "set_per_ctn": 1,
@@ -305,11 +291,11 @@
     "width_m": 0.365,
     "height_m": 0.433,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.923Z"
+    "updatedAt": "2026-05-20T16:13:33.316Z"
   },
   {
     "brand": "Edifier",
-    "sku": "ed-s2000mkiii-brown",
+    "sku": "edifiers2000mkbrown",
     "model": "S2000MKⅢ",
     "colour": "brown",
     "set_per_ctn": 1,
@@ -319,11 +305,11 @@
     "width_m": 0.378,
     "height_m": 0.448,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "ed-s3000mkii-brown",
+    "sku": "edifiers3000mkbrown",
     "model": "S3000MKⅡ",
     "colour": "brown",
     "set_per_ctn": 1,
@@ -333,11 +319,11 @@
     "width_m": 0.388,
     "height_m": 0.477,
     "moq": 10,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-s350db",
+    "sku": "edifiers350dbbrown",
     "model": "S350DB",
     "colour": "brown",
     "set_per_ctn": 1,
@@ -347,11 +333,11 @@
     "width_m": 0.376,
     "height_m": 0.382,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-s351db",
+    "sku": "edifiers351dbblack",
     "model": "S351DB",
     "colour": "black",
     "set_per_ctn": 1,
@@ -361,7 +347,7 @@
     "width_m": 0.376,
     "height_m": 0.382,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -375,7 +361,7 @@
     "width_m": 0.428,
     "height_m": 0.415,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -389,7 +375,7 @@
     "width_m": 0.378,
     "height_m": 0.448,
     "moq": 10,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -403,7 +389,7 @@
     "width_m": 0.356,
     "height_m": 0.56,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -417,11 +403,11 @@
     "width_m": 0.356,
     "height_m": 0.56,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qd25-black",
+    "sku": "edifierqd25black",
     "model": "QD25",
     "colour": "black",
     "set_per_ctn": 8,
@@ -431,11 +417,11 @@
     "width_m": 0.306,
     "height_m": 0.358,
     "moq": 48,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qd25-white",
+    "sku": "edifierqd25white",
     "model": "QD25",
     "colour": "white",
     "set_per_ctn": 8,
@@ -445,11 +431,11 @@
     "width_m": 0.306,
     "height_m": 0.358,
     "moq": 48,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qs20-black",
+    "sku": "edifierqs20black",
     "model": "QS20",
     "colour": "black",
     "set_per_ctn": 16,
@@ -459,11 +445,11 @@
     "width_m": 0.27,
     "height_m": 0.292,
     "moq": 96,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qs20-red",
+    "sku": "edifierqs20red",
     "model": "QS20",
     "colour": "red",
     "set_per_ctn": 16,
@@ -473,11 +459,11 @@
     "width_m": 0.27,
     "height_m": 0.292,
     "moq": 96,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qs20-silver",
+    "sku": "edifierqs20silver",
     "model": "QS20",
     "colour": "silver",
     "set_per_ctn": 16,
@@ -487,11 +473,11 @@
     "width_m": 0.27,
     "height_m": 0.292,
     "moq": 96,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qr65-black",
+    "sku": "edifierqr65black",
     "model": "QR65",
     "colour": "black",
     "set_per_ctn": 2,
@@ -501,11 +487,11 @@
     "width_m": 0.382,
     "height_m": 0.363,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-qr65-white",
+    "sku": "edifierqr65white",
     "model": "QR65",
     "colour": "white",
     "set_per_ctn": 2,
@@ -515,7 +501,7 @@
     "width_m": 0.382,
     "height_m": 0.363,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -529,7 +515,7 @@
     "width_m": 0.445,
     "height_m": 0.249,
     "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -543,39 +529,11 @@
     "width_m": 0.445,
     "height_m": 0.249,
     "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mp230-brown",
-    "model": "MP230",
-    "colour": "retro black",
-    "set_per_ctn": 16,
-    "volume_per_ctn": 0.06398595,
-    "carton_size": "0.544*0.445*0.249M",
-    "length_m": 0.544,
-    "width_m": 0.445,
-    "height_m": 0.249,
-    "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
-  },
-  {
-    "brand": "Edifier",
-    "sku": "edifier-mp230-black",
-    "model": "MP230",
-    "colour": "white",
-    "set_per_ctn": 16,
-    "volume_per_ctn": 0.06398595,
-    "carton_size": "0.544*0.445*0.249M",
-    "length_m": 0.544,
-    "width_m": 0.445,
-    "height_m": 0.249,
-    "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
-  },
-  {
-    "brand": "Edifier",
-    "sku": "edifier-mp330-brown",
+    "sku": "edifiermp330brown",
     "model": "MP330",
     "colour": "brown",
     "set_per_ctn": 8,
@@ -585,11 +543,11 @@
     "width_m": 0.346,
     "height_m": 0.346,
     "moq": 72,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mp330-ivory",
+    "sku": "edifiermp330ivory",
     "model": "MP330",
     "colour": "ivory",
     "set_per_ctn": 8,
@@ -599,11 +557,11 @@
     "width_m": 0.346,
     "height_m": 0.346,
     "moq": 72,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mp330-black",
+    "sku": "edifiermp330retroblack",
     "model": "MP330",
     "colour": "retro black",
     "set_per_ctn": 8,
@@ -613,11 +571,11 @@
     "width_m": 0.346,
     "height_m": 0.346,
     "moq": 72,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mr3-black",
+    "sku": "edifiermr3black",
     "model": "MR3",
     "colour": "black",
     "set_per_ctn": 2,
@@ -627,11 +585,11 @@
     "width_m": 0.324,
     "height_m": 0.376,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mr3-white",
+    "sku": "edifiermr3white",
     "model": "MR3",
     "colour": "white",
     "set_per_ctn": 2,
@@ -641,11 +599,11 @@
     "width_m": 0.324,
     "height_m": 0.376,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mr5-black",
+    "sku": "edifiermr5black",
     "model": "MR5",
     "colour": "black",
     "set_per_ctn": 1,
@@ -655,11 +613,11 @@
     "width_m": 0.356,
     "height_m": 0.372,
     "moq": 40,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-mr5-white",
+    "sku": "edifiermr5white",
     "model": "MR5",
     "colour": "white",
     "set_per_ctn": 1,
@@ -669,11 +627,11 @@
     "width_m": 0.356,
     "height_m": 0.372,
     "moq": 40,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-r990bt-black",
+    "sku": "edifierr990btblack",
     "model": "R990BT",
     "colour": "black",
     "set_per_ctn": 2,
@@ -683,11 +641,11 @@
     "width_m": 0.329,
     "height_m": 0.395,
     "moq": 48,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-ss02-brown",
+    "sku": "edifier-s2000pro-stand",
     "model": "SS02",
     "colour": "black",
     "set_per_ctn": 1,
@@ -697,11 +655,11 @@
     "width_m": 0.485,
     "height_m": 0.287,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-ss02c-brown",
+    "sku": "edifierss02cblack",
     "model": "SS02C",
     "colour": "black",
     "set_per_ctn": 1,
@@ -711,7 +669,7 @@
     "width_m": 0.485,
     "height_m": 0.287,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -725,11 +683,25 @@
     "width_m": 0.487,
     "height_m": 0.305,
     "moq": 150,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-t5",
+    "sku": "edifierss04silver",
+    "model": "SS04",
+    "colour": "silver",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.06840467,
+    "carton_size": "0.452*0.298*0.484M",
+    "length_m": 0.452,
+    "width_m": 0.298,
+    "height_m": 0.484,
+    "moq": 500,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiert5black",
     "model": "T5",
     "colour": "black",
     "set_per_ctn": 1,
@@ -739,11 +711,11 @@
     "width_m": 0.383,
     "height_m": 0.404,
     "moq": 20,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-t5s-black",
+    "sku": "edifiert5sblack",
     "model": "T5s",
     "colour": "black",
     "set_per_ctn": 1,
@@ -753,11 +725,11 @@
     "width_m": 0.277,
     "height_m": 0.517,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-t5s-brown",
+    "sku": "edifiert5sbrown",
     "model": "T5s",
     "colour": "brown",
     "set_per_ctn": 1,
@@ -767,11 +739,193 @@
     "width_m": 0.277,
     "height_m": 0.517,
     "moq": 50,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-p205-black",
+    "sku": "edifierr1380dbblack",
+    "model": "R1380DB",
+    "colour": "black",
+    "set_per_ctn": 2,
+    "volume_per_ctn": 0.07065673,
+    "carton_size": "0.464*0.352*0.412M",
+    "length_m": 0.464,
+    "width_m": 0.352,
+    "height_m": 0.412,
+    "moq": 50,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierr19btblack",
+    "model": "R19BT",
+    "colour": "black",
+    "set_per_ctn": 8,
+    "volume_per_ctn": 0.076546449,
+    "carton_size": "0.492*0.322*0.461M",
+    "length_m": 0.492,
+    "width_m": 0.322,
+    "height_m": 0.461,
+    "moq": 96,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiers880dbmkiiwalnut",
+    "model": "S880DB MKII",
+    "colour": "walnut",
+    "set_per_ctn": 2,
+    "volume_per_ctn": 0.08411075,
+    "carton_size": "0.541*0.408*0.363M",
+    "length_m": 0.541,
+    "width_m": 0.408,
+    "height_m": 0.363,
+    "moq": 20,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiers880dbmkiiwhite",
+    "model": "S880DB MKII",
+    "colour": "white",
+    "set_per_ctn": 2,
+    "volume_per_ctn": 0.08411075,
+    "carton_size": "0.541*0.408*0.363M",
+    "length_m": 0.541,
+    "width_m": 0.408,
+    "height_m": 0.363,
+    "moq": 20,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierg2btred",
+    "model": "G2BT",
+    "colour": "red",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.116655,
+    "carton_size": "0.520*0.435*0.495M",
+    "length_m": 0.52,
+    "width_m": 0.435,
+    "height_m": 0.495,
+    "moq": 40,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierg2btpink",
+    "model": "G2BT",
+    "colour": "pink",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.116655,
+    "carton_size": "0.520*0.435*0.495M",
+    "length_m": 0.52,
+    "width_m": 0.435,
+    "height_m": 0.495,
+    "moq": 40,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierg2btgrey",
+    "model": "G2BT",
+    "colour": "grey",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.116655,
+    "carton_size": "0.520*0.435*0.495M",
+    "length_m": 0.52,
+    "width_m": 0.435,
+    "height_m": 0.495,
+    "moq": 40,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierg2btblack",
+    "model": "G2BT",
+    "colour": "black",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.116655,
+    "carton_size": "0.520*0.435*0.495M",
+    "length_m": 0.52,
+    "width_m": 0.435,
+    "height_m": 0.495,
+    "moq": 100,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws330nbblack",
+    "model": "TWS330 NB",
+    "colour": "black",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.04222206,
+    "carton_size": "0.384*0.319*0.325M",
+    "length_m": 0.384,
+    "width_m": 0.319,
+    "height_m": 0.325,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws330nbwhite",
+    "model": "TWS330 NB",
+    "colour": "white",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.04222206,
+    "carton_size": "0.384*0.319*0.325M",
+    "length_m": 0.384,
+    "width_m": 0.319,
+    "height_m": 0.325,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws1progrey",
+    "model": "TWS1 Pro",
+    "colour": "grey",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.0117175,
+    "carton_size": "0.25*0.215*0.218M",
+    "length_m": 0.25,
+    "width_m": 0.215,
+    "height_m": 0.218,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws1proivory",
+    "model": "TWS1 Pro",
+    "colour": "Ivory",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.0117175,
+    "carton_size": "0.25*0.215*0.218M",
+    "length_m": 0.25,
+    "width_m": 0.215,
+    "height_m": 0.218,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws1propink",
+    "model": "TWS1 Pro",
+    "colour": "pink",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.071489,
+    "carton_size": "0.48*0.33*0.43M",
+    "length_m": 0.48,
+    "width_m": 0.33,
+    "height_m": 0.43,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierp205black",
     "model": "P205",
     "colour": "black",
     "set_per_ctn": 40,
@@ -781,11 +935,11 @@
     "width_m": 0.26,
     "height_m": 0.156,
     "moq": 1000,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-p205-white",
+    "sku": "edifierp205white",
     "model": "P205",
     "colour": "white",
     "set_per_ctn": 40,
@@ -795,7 +949,189 @@
     "width_m": 0.26,
     "height_m": 0.156,
     "moq": 1000,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierw820nbblack",
+    "model": "W820NB",
+    "colour": "black",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.0973135,
+    "carton_size": "0.5*0.465*0.4M",
+    "length_m": 0.5,
+    "width_m": 0.465,
+    "height_m": 0.4,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierw800btplusblack",
+    "model": "W800BT Plus",
+    "colour": "black",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.097407794,
+    "carton_size": "0.494*0.462*0.408M",
+    "length_m": 0.494,
+    "width_m": 0.462,
+    "height_m": 0.408,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiers3black",
+    "model": "S3",
+    "colour": "black",
+    "set_per_ctn": 4,
+    "volume_per_ctn": 0.078438543,
+    "carton_size": "0.568*0.368*0.357M",
+    "length_m": 0.568,
+    "width_m": 0.368,
+    "height_m": 0.357,
+    "moq": 12,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertwsnb2problack",
+    "model": "TWS NB2 Pro",
+    "colour": "black",
+    "set_per_ctn": 10,
+    "volume_per_ctn": 0.016202006,
+    "carton_size": "0.353*0.266*0.157M",
+    "length_m": 0.353,
+    "width_m": 0.266,
+    "height_m": 0.157,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertwsnb2progrey",
+    "model": "TWS NB2 Pro",
+    "colour": "grey",
+    "set_per_ctn": 10,
+    "volume_per_ctn": 0.016202006,
+    "carton_size": "0.353*0.266*0.157M",
+    "length_m": 0.353,
+    "width_m": 0.266,
+    "height_m": 0.157,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertwsnb2prowhite",
+    "model": "TWS NB2 Pro",
+    "colour": "white",
+    "set_per_ctn": 10,
+    "volume_per_ctn": 0.016202006,
+    "carton_size": "0.353*0.266*0.157M",
+    "length_m": 0.353,
+    "width_m": 0.266,
+    "height_m": 0.157,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierneobudsproblack",
+    "model": "NeoBuds Pro",
+    "colour": "black",
+    "set_per_ctn": 40,
+    "volume_per_ctn": 0.06766817,
+    "carton_size": "0.416*0.281*0.552M",
+    "length_m": 0.416,
+    "width_m": 0.281,
+    "height_m": 0.552,
+    "moq": 100,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws200plusivory",
+    "model": "TWS200 Plus",
+    "colour": "Ivory",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.01157912,
+    "carton_size": "0.227*0.212*.022M",
+    "length_m": 0.227,
+    "width_m": 0.212,
+    "height_m": 0.022,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiertws200plusblack",
+    "model": "TWS200 Plus",
+    "colour": "black",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.01157912,
+    "carton_size": "0.227*0.212*.022M",
+    "length_m": 0.227,
+    "width_m": 0.212,
+    "height_m": 0.022,
+    "moq": 200,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx3black",
+    "model": "X3",
+    "colour": "black",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.031635513,
+    "carton_size": "0.356*0.316*0.263M",
+    "length_m": 0.356,
+    "width_m": 0.316,
+    "height_m": 0.263,
+    "moq": 80,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx3white",
+    "model": "X3",
+    "colour": "white",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.031635513,
+    "carton_size": "0.356*0.316*0.263M",
+    "length_m": 0.356,
+    "width_m": 0.316,
+    "height_m": 0.263,
+    "moq": 80,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx3blue",
+    "model": "X3",
+    "colour": "blue",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.031635513,
+    "carton_size": "0.356*0.316*0.263M",
+    "length_m": 0.356,
+    "width_m": 0.316,
+    "height_m": 0.263,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx3pink",
+    "model": "X3",
+    "colour": "pink",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.031635513,
+    "carton_size": "0.356*0.316*0.263M",
+    "length_m": 0.356,
+    "width_m": 0.316,
+    "height_m": 0.263,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -809,7 +1145,7 @@
     "width_m": 0.322,
     "height_m": 0.268,
     "moq": 160,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -823,7 +1159,7 @@
     "width_m": 0.322,
     "height_m": 0.268,
     "moq": 160,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -837,7 +1173,7 @@
     "width_m": 0.322,
     "height_m": 0.268,
     "moq": 160,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -851,7 +1187,7 @@
     "width_m": 0.322,
     "height_m": 0.268,
     "moq": 160,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -865,7 +1201,7 @@
     "width_m": 0.245,
     "height_m": 0.393,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -879,7 +1215,7 @@
     "width_m": 0.245,
     "height_m": 0.393,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
@@ -893,11 +1229,165 @@
     "width_m": 0.245,
     "height_m": 0.393,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-v80-brown",
+    "sku": "edifierx2sblack",
+    "model": "X2s",
+    "colour": "black",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx2swhite",
+    "model": "X2s",
+    "colour": "white",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx2sivory",
+    "model": "X2s",
+    "colour": "ivory",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx2sgray",
+    "model": "X2s",
+    "colour": "gray",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx2sgreen",
+    "model": "X2s",
+    "colour": "green",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx2spink",
+    "model": "X2s",
+    "colour": "pink",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.030723612,
+    "carton_size": "0.327*0.322*0.273M",
+    "length_m": 0.327,
+    "width_m": 0.322,
+    "height_m": 0.273,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierx3sblack",
+    "model": "X3s",
+    "colour": "black",
+    "set_per_ctn": 80,
+    "volume_per_ctn": 0.043696125,
+    "carton_size": "0.358*0.316*0.365M",
+    "length_m": 0.358,
+    "width_m": 0.316,
+    "height_m": 0.365,
+    "moq": 160,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierwh700nbblack",
+    "model": "WH700NB",
+    "colour": "black",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.1039391,
+    "carton_size": "0.500*0.497*0.400M",
+    "length_m": 0.5,
+    "width_m": 0.497,
+    "height_m": 0.4,
+    "moq": 60,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierwh700nbivory",
+    "model": "WH700NB",
+    "colour": "ivory",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.1039391,
+    "carton_size": "0.500*0.497*0.400M",
+    "length_m": 0.5,
+    "width_m": 0.497,
+    "height_m": 0.4,
+    "moq": 60,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierwh700nbnavy",
+    "model": "WH700NB",
+    "colour": "navy",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.1039391,
+    "carton_size": "0.500*0.497*0.400M",
+    "length_m": 0.5,
+    "width_m": 0.497,
+    "height_m": 0.4,
+    "moq": 60,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierwh700nbgray",
+    "model": "WH700NB",
+    "colour": "gray",
+    "set_per_ctn": 20,
+    "volume_per_ctn": 0.1039391,
+    "carton_size": "0.500*0.497*0.400M",
+    "length_m": 0.5,
+    "width_m": 0.497,
+    "height_m": 0.4,
+    "moq": 60,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierv80brown",
     "model": "V80",
     "colour": "brown",
     "set_per_ctn": 20,
@@ -907,11 +1397,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 5000,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-v80-navy",
+    "sku": "edifierv80navy",
     "model": "V80",
     "colour": "navy",
     "set_per_ctn": 20,
@@ -921,11 +1411,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 5000,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-v80-ivory",
+    "sku": "edifierv80ivory",
     "model": "V80",
     "colour": "ivory",
     "set_per_ctn": 20,
@@ -935,11 +1425,67 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 5000,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-wh950nbgen2-black",
+    "sku": "edifiercomfocblack",
+    "model": "Comfo C",
+    "colour": "black",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.0361998,
+    "carton_size": "0.415*0.333*0.245M",
+    "length_m": 0.415,
+    "width_m": 0.333,
+    "height_m": 0.245,
+    "moq": 120,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiercomfocstarlight",
+    "model": "Comfo C",
+    "colour": "starlight",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.0361998,
+    "carton_size": "0.415*0.333*0.245M",
+    "length_m": 0.415,
+    "width_m": 0.333,
+    "height_m": 0.245,
+    "moq": 120,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiercomfocpink",
+    "model": "Comfo C",
+    "colour": "pink",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.0361998,
+    "carton_size": "0.415*0.333*0.245M",
+    "length_m": 0.415,
+    "width_m": 0.333,
+    "height_m": 0.245,
+    "moq": 120,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifiercomfocgreen",
+    "model": "Comfo C",
+    "colour": "green",
+    "set_per_ctn": 60,
+    "volume_per_ctn": 0.0361998,
+    "carton_size": "0.415*0.333*0.245M",
+    "length_m": 0.415,
+    "width_m": 0.333,
+    "height_m": 0.245,
+    "moq": 120,
+    "updatedAt": "2026-05-20T16:13:33.317Z"
+  },
+  {
+    "brand": "Edifier",
+    "sku": "edifierwh950nb25vblack",
     "model": "WH950NB 25V",
     "colour": "black",
     "set_per_ctn": 10,
@@ -949,11 +1495,11 @@
     "width_m": 0.375,
     "height_m": 0.261,
     "moq": 40,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-wh950nbgen2-ivory",
+    "sku": "edifierwh950nb25vivory",
     "model": "WH950NB 25V",
     "colour": "ivory",
     "set_per_ctn": 10,
@@ -963,11 +1509,11 @@
     "width_m": 0.375,
     "height_m": 0.261,
     "moq": 40,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-x5lite-black",
+    "sku": "edifierx5liteblack",
     "model": "X5 Lite",
     "colour": "black",
     "set_per_ctn": 80,
@@ -977,11 +1523,11 @@
     "width_m": 0.316,
     "height_m": 0.265,
     "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-x5lite-white",
+    "sku": "edifierx5litewhite",
     "model": "X5 Lite",
     "colour": "white",
     "set_per_ctn": 80,
@@ -991,11 +1537,11 @@
     "width_m": 0.316,
     "height_m": 0.265,
     "moq": 80,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w830nb-black",
+    "sku": "edifierw830nbblack",
     "model": "W830NB",
     "colour": "black",
     "set_per_ctn": 20,
@@ -1005,11 +1551,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w830nb-grey",
+    "sku": "edifierw830nbgray",
     "model": "W830NB",
     "colour": "gray",
     "set_per_ctn": 20,
@@ -1019,11 +1565,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w830nb-white",
+    "sku": "edifierw830nbsandwhite",
     "model": "W830NB",
     "colour": "sand white",
     "set_per_ctn": 20,
@@ -1033,11 +1579,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w800btpro-black",
+    "sku": "edifierw800btproblack",
     "model": "W800BT Pro",
     "colour": "black",
     "set_per_ctn": 20,
@@ -1047,11 +1593,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w800btpro-grey",
+    "sku": "edifierw800btprogray",
     "model": "W800BT Pro",
     "colour": "gray",
     "set_per_ctn": 20,
@@ -1061,11 +1607,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w800btpro-ivory",
+    "sku": "edifierw800btproivory",
     "model": "W800BT Pro",
     "colour": "ivory",
     "set_per_ctn": 20,
@@ -1075,11 +1621,11 @@
     "width_m": 0.315,
     "height_m": 0.416,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w820nbplusgen2-ivory",
+    "sku": "edifierw820nbplus25versionivory",
     "model": "W820NB Plus 25version",
     "colour": "ivory",
     "set_per_ctn": 20,
@@ -1089,11 +1635,11 @@
     "width_m": 0.288,
     "height_m": 0.402,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w820nbplusgen2-grey",
+    "sku": "edifierw820nbplus25versiondarkgray",
     "model": "W820NB Plus 25version",
     "colour": "dark gray",
     "set_per_ctn": 20,
@@ -1103,11 +1649,11 @@
     "width_m": 0.288,
     "height_m": 0.402,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w820nbplusgen2-navy",
+    "sku": "edifierw820nbplus25versionnavy",
     "model": "W820NB Plus 25version",
     "colour": "navy",
     "set_per_ctn": 20,
@@ -1117,11 +1663,11 @@
     "width_m": 0.288,
     "height_m": 0.402,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   },
   {
     "brand": "Edifier",
-    "sku": "edifier-w820nbplusgen2-pink",
+    "sku": "edifierw820nbplus25versionsmokypink",
     "model": "W820NB Plus 25version",
     "colour": "smoky pink",
     "set_per_ctn": 20,
@@ -1131,6 +1677,6 @@
     "width_m": 0.288,
     "height_m": 0.402,
     "moq": 100,
-    "updatedAt": "2026-05-20T18:10:59.924Z"
+    "updatedAt": "2026-05-20T16:13:33.317Z"
   }
 ]
