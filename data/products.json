@@ -97,6 +97,20 @@
     "moq": 50,
     "updatedAt": "2026-05-20T16:13:33.316Z"
   },
+    {
+    "brand": "Edifier",
+    "sku": "edifier-r1280db-white",
+    "model": "R1280DB",
+    "colour": "white silver",
+    "set_per_ctn": 2,
+    "volume_per_ctn": 0.06065523,
+    "carton_size": "0.453*0.322*0.395M",
+    "length_m": 0.453,
+    "width_m": 0.322,
+    "height_m": 0.395,
+    "moq": 50,
+    "updatedAt": "2026-05-20T16:13:33.316Z"
+  },
   {
     "brand": "Edifier",
     "sku": "edifier-r1280dbs-wood",
