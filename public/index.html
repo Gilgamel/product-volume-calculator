@@ -49,6 +49,10 @@
     .container-card table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     .container-card th, .container-card td { padding: 8px; text-align: left; border-bottom: 1px solid #eee; font-size: 13px; }
     .saved-containers-list { margin-bottom: 20px; }
+    .container-actions { margin-top: 10px; }
+    .edit-btn { padding: 5px 15px; background: #ffc107; color: #000; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; margin-right: 5px; }
+    .delete-btn { padding: 5px 15px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; }
+    .edit-container-section { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
   </style>
 </head>
 <body>
@@ -125,6 +129,25 @@
         </div>
         </div>
         <div id="savedContainers" class="saved-containers-list"></div>
+        <div id="editContainerSection" class="edit-container-section" style="display: none;">
+          <h3>Edit Container <span id="editContainerNum"></span></h3>
+          <div id="editSummary" style="margin-bottom: 15px; padding: 10px; background: #e9ecef; border-radius: 4px;"></div>
+          <div id="editProductList"></div>
+          <div style="margin: 15px 0; padding: 15px; background: #f8f9fa; border-radius: 4px;">
+            <h4 style="margin-bottom: 10px;">Add More Products</h4>
+            <div class="product-select">
+              <select id="editProductSelect">
+                <option value="">Select a product...</option>
+              </select>
+              <input type="number" id="editQtyInput" placeholder="Qty" min="1" value="1">
+              <button class="save-btn" onclick="addToEditContainer()">Add</button>
+            </div>
+          </div>
+          <div style="margin-top: 15px;">
+            <button class="save-btn" onclick="saveEditedContainer()">Save Changes</button>
+            <button class="delete-btn" onclick="cancelEditContainer()">Cancel</button>
+          </div>
+        </div>
         <div class="save-section" id="saveSection" style="display: none;">
           <button class="save-btn" onclick="saveContainer()">Save Container</button>
         </div>
@@ -323,7 +346,13 @@
         const containerNum = index + 1;
         html += `
           <div class="container-card">
-            <h3>Container ${containerNum} (${container.totalVol.toFixed(4)} CBM)</h3>
+            <h3>
+              <span>Container ${containerNum} (${container.totalVol.toFixed(4)} CBM)</span>
+              <div>
+                <button class="edit-btn" onclick="editContainer(${index})">Edit</button>
+                <button class="delete-btn" onclick="deleteContainer(${index})">Delete</button>
+              </div>
+            </h3>
             <table>
               <thead>
                 <tr>
@@ -362,6 +391,156 @@
     function updateDownloadButton() {
       const downloadSection = document.getElementById('downloadSection');
       downloadSection.style.display = savedContainers.length > 0 ? 'block' : 'none';
+    }
+
+    function deleteContainer(index) {
+      if (!confirm('Delete Container ' + (index + 1) + '?')) return;
+      savedContainers.splice(index, 1);
+      renderSavedContainers();
+      updateDownloadButton();
+    }
+
+    let editingContainerIndex = -1;
+
+    function editContainer(index) {
+      editingContainerIndex = index;
+      const container = savedContainers[index];
+      document.getElementById('editContainerNum').textContent = index + 1;
+      document.getElementById('editContainerSection').style.display = 'block';
+
+      // Populate product dropdown
+      const editSelect = document.getElementById('editProductSelect');
+      editSelect.innerHTML = '<option value="">Select a product...</option>';
+      allProducts.forEach(p => {
+        const option = document.createElement('option');
+        option.value = p.sku;
+        option.textContent = `${p.sku} - ${p.volume_per_ctn?.toFixed(4)} CBM/CTN`;
+        editSelect.appendChild(option);
+      });
+
+      updateEditSummary();
+      renderEditProductList();
+    }
+
+    function updateEditSummary() {
+      if (editingContainerIndex < 0) return;
+      const container = savedContainers[editingContainerIndex];
+      const totalVol = container.totalVol;
+      const containersNeeded = Math.ceil(totalVol / CONTAINER_MAX);
+      const remainingSpace = (containersNeeded * CONTAINER_MAX) - totalVol;
+      const utilization = containersNeeded === 1
+        ? ((totalVol / CONTAINER_MAX) * 100).toFixed(1)
+        : (((totalVol - CONTAINER_MAX * (containersNeeded - 1)) / CONTAINER_MAX) * 100).toFixed(1);
+
+      document.getElementById('editSummary').innerHTML = `
+        Total Volume: <strong>${totalVol.toFixed(4)} CBM</strong> |
+        Containers Needed: <strong>${containersNeeded}</strong> |
+        Remaining Space: <strong>${remainingSpace.toFixed(4)} CBM</strong> |
+        Utilization: <strong>${utilization}%</strong>
+      `;
+    }
+
+    function renderEditProductList() {
+      if (editingContainerIndex < 0) return;
+      const container = savedContainers[editingContainerIndex];
+
+      const list = document.getElementById('editProductList');
+      list.innerHTML = container.products.map((p, i) => {
+        const ctnsNeeded = Math.ceil(p.qty / p.set_per_ctn);
+        const totalVol = ctnsNeeded * p.volume_per_ctn;
+        return `
+          <div style="margin-bottom: 10px; padding: 10px; background: #f8f8f8; border-radius: 4px;">
+            <strong>${p.sku}</strong> (${p.model || ''} - ${p.colour || ''})<br>
+            Qty: <input type="number" id="edit-qty-${i}" value="${p.qty}" min="1" style="width: 80px; padding: 5px;" onchange="updateEditProductQty(${i})">
+            | CTNs Needed: ${ctnsNeeded} | Vol: ${totalVol.toFixed(6)} CBM
+            <button onclick="removeFromEdit(${i})" style="padding: 5px 10px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; float: right;">Remove</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateEditProductQty(productIndex) {
+      if (editingContainerIndex < 0) return;
+      const container = savedContainers[editingContainerIndex];
+      const qtyInput = document.getElementById('edit-qty-' + productIndex);
+      if (qtyInput) {
+        container.products[productIndex].qty = parseInt(qtyInput.value) || 1;
+        // Recalculate totalVol
+        let totalVol = 0;
+        container.products.forEach(sp => {
+          const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+          totalVol += ctnsNeeded * sp.volume_per_ctn;
+        });
+        container.totalVol = totalVol;
+        updateEditSummary();
+        renderEditProductList();
+      }
+    }
+
+    function removeFromEdit(productIndex) {
+      if (editingContainerIndex < 0) return;
+      savedContainers[editingContainerIndex].products.splice(productIndex, 1);
+      let totalVol = 0;
+      savedContainers[editingContainerIndex].products.forEach(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        totalVol += ctnsNeeded * sp.volume_per_ctn;
+      });
+      savedContainers[editingContainerIndex].totalVol = totalVol;
+      updateEditSummary();
+      renderEditProductList();
+    }
+
+    function addToEditContainer() {
+      if (editingContainerIndex < 0) return;
+      const select = document.getElementById('editProductSelect');
+      const qtyInput = document.getElementById('editQtyInput');
+      const sku = select.value;
+      const qty = parseInt(qtyInput.value) || 1;
+
+      if (!sku) return alert('Please select a product');
+
+      const product = allProducts.find(p => p.sku === sku);
+      if (!product) return alert('Product not found');
+
+      savedContainers[editingContainerIndex].products.push({ ...product, qty });
+
+      let totalVol = 0;
+      savedContainers[editingContainerIndex].products.forEach(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        totalVol += ctnsNeeded * sp.volume_per_ctn;
+      });
+      savedContainers[editingContainerIndex].totalVol = totalVol;
+
+      qtyInput.value = '1';
+      updateEditSummary();
+      renderEditProductList();
+    }
+
+    function saveEditedContainer() {
+      if (editingContainerIndex < 0) return;
+      const container = savedContainers[editingContainerIndex];
+      // Update quantities from inputs
+      container.products.forEach((p, i) => {
+        const qtyInput = document.getElementById('edit-qty-' + i);
+        if (qtyInput) {
+          p.qty = parseInt(qtyInput.value) || 1;
+        }
+      });
+      // Recalculate totalVol
+      let totalVol = 0;
+      container.products.forEach(sp => {
+        const ctnsNeeded = Math.ceil(sp.qty / sp.set_per_ctn);
+        totalVol += ctnsNeeded * sp.volume_per_ctn;
+      });
+      container.totalVol = totalVol;
+      editingContainerIndex = -1;
+      document.getElementById('editContainerSection').style.display = 'none';
+      renderSavedContainers();
+    }
+
+    function cancelEditContainer() {
+      editingContainerIndex = -1;
+      document.getElementById('editContainerSection').style.display = 'none';
     }
 
     function downloadExcel() {
