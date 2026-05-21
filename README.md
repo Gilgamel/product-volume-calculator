@@ -5,8 +5,8 @@ Internal tool for Ventmere — quickly calculate volumes for any combination of 
 ## Features
 
 - **Pick SKUs, get volumes** — select products from the list, enter quantities, see total volume and containers needed
-- **Multi-container management** — split products across multiple containers, edit or delete each one individually
-- **Utilization at a glance** — total CBM, remaining space, and usage percentage
+- **Multi-container support** — save multiple containers, edit quantities, add/remove products, delete containers
+- **Utilization at a glance** — total CBM, remaining space, and usage percentage for each container
 - **Export to Excel** — download container plans as .xlsx, one sheet per container
 
 ## Quick Start
@@ -18,11 +18,27 @@ npm start
 
 Open http://localhost:3000.
 
+## Usage
+
+1. Select a product from the dropdown and enter quantity
+2. Click "Add" to add to current selection
+3. Repeat until all products are added
+4. Click "Save Container" to save the current set
+5. Repeat to create multiple containers
+6. Click "Download Excel" to export all containers
+
+## Excel Output
+
+Each saved container becomes a separate sheet (Container-1, Container-2, etc.) with:
+- Brand, SKU, Model, Colour
+- Quantity, Sets/CTN, CTNs Needed
+- Vol/CTN, Total Vol
+
 ## Stack
 
 - Frontend: plain HTML + CSS + JS, no framework
 - Backend: Node.js + Express
-- Data: JSON file (update directly)
+- Data: JSON file (`public/data/products.json`)
 - Deployment: Vercel (serverless)
 
 ## 40ft HQ Container Specs
@@ -46,5 +62,5 @@ Open http://localhost:3000.
 │   └── data/
 │       └── products.json
 ├── server.js         # Dev server
-└── data/             # Data files
+└── package.json
 ```
